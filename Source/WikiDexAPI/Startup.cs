@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using WikiDex.Business;
+using WikiDex.Business.Interfaces;
 
 namespace WikiDexAPI
 {
@@ -19,7 +21,12 @@ namespace WikiDexAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IConfiguration>(provider => Configuration);
+            services.AddSingleton<AppSettingUtil>();
+
             services.AddControllers();
+            services.AddScoped<IArticlesService, ArticlesService>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WikiDexAPI", Version = "v1" });
