@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
 using WikiDex.Business.Interfaces;
 using WikiDexAPI.Model;
 
@@ -18,12 +17,6 @@ namespace WikiDexAPI.Controllers
         {
             _logger = logger;
             _articlesService = articlesService;
-        }
-
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
         }
 
         // GET api/<PokemonController>/5
