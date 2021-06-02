@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using WikiDex.Business.Interfaces;
 using WikiDexAPI.Model;
 
 namespace WikiDexAPI.Controllers
@@ -11,9 +12,12 @@ namespace WikiDexAPI.Controllers
     {
         private readonly ILogger<PokemonController> _logger;
 
-        public PokemonController(ILogger<PokemonController> logger)
+        private readonly IArticlesService _articlesService;
+
+        public PokemonController(ILogger<PokemonController> logger, IArticlesService articlesService)
         {
             _logger = logger;
+            _articlesService = articlesService;
         }
 
         [HttpGet]
@@ -26,6 +30,8 @@ namespace WikiDexAPI.Controllers
         [HttpGet("ByNatNumber/{id}")]
         public PokemonDataModel GetByNatNumber(int id)
         {
+            _logger.LogTrace($"GetByNatNumber(id={id})");
+
             // This is temporary
             return new PokemonDataModel()
             {
