@@ -9,13 +9,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WikiDex.Business", "WikiDex
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WikiDex.Entities", "WikiDex.Entities\WikiDex.Entities.csproj", "{A5C03459-2119-4F31-AD3B-8DAFAB67487E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8E736799-2DF6-4179-8668-0AEF7878C8EA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 Docker", "0 Docker", "{8E736799-2DF6-4179-8668-0AEF7878C8EA}"
 	ProjectSection(SolutionItems) = preProject
 		Dockerfile = Dockerfile
 		..\heroku.yml = ..\heroku.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WikiDex.UnitTests", "WikiDex.UnitTests\WikiDex.UnitTests.csproj", "{20394D7A-1E19-45DA-9003-836DCC8E6BAF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 Web", "1 Web", "{87247B9E-369D-4B5E-B2B2-A306C21644F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 Back-End", "2 Back-End", "{8ECD7975-33E7-4AF0-94F4-F0CF2A9A7F17}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{EF85557E-BF04-4C29-BC7E-C3CE7D4907D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +48,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{375A9E6E-685D-4202-B47D-50F984BBB62A} = {87247B9E-369D-4B5E-B2B2-A306C21644F2}
+		{F9695D65-8BC9-4740-A984-4715F4FCBAEF} = {8ECD7975-33E7-4AF0-94F4-F0CF2A9A7F17}
+		{A5C03459-2119-4F31-AD3B-8DAFAB67487E} = {8ECD7975-33E7-4AF0-94F4-F0CF2A9A7F17}
+		{20394D7A-1E19-45DA-9003-836DCC8E6BAF} = {EF85557E-BF04-4C29-BC7E-C3CE7D4907D5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4EF5FDB7-7742-4E12-8BE2-030F22E1EDFB}
