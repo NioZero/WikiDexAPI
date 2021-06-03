@@ -23,10 +23,15 @@ namespace WikiDex.Business
 
         private readonly IConfiguration _configuration;
 
+        private readonly WikiDexSettings _settings;
+
         public ArticlesService(ILogger<ArticlesService> logger, IConfiguration configuration)
         {
             _logger = logger;
             _configuration = configuration;
+
+            _settings = new WikiDexSettings();
+            _configuration.GetSection(WikiDexSettings.Key).Bind(_settings);
         }
 
         /// <summary>
@@ -38,15 +43,12 @@ namespace WikiDex.Business
         {
             _logger.LogTrace($"SearchArticles(search='{search}')");
 
-            var settings = new WikiDexSettings();
-            _configuration.GetSection(WikiDexSettings.WikiDex).Bind(settings);
-
             var parametros = new QueryStringParameters();
             parametros["format"] = "json";
             parametros["action"] = "opensearch";
             parametros["search"] = search;
 
-            string url = string.Format("{0}?{1}", settings.Url, parametros.BuildQueryString(false));
+            string url = string.Format("{0}?{1}", _settings.Url, parametros.BuildQueryString(false));
 
             using (WebClient client = new WebClient())
             {
@@ -73,9 +75,6 @@ namespace WikiDex.Business
         {
             _logger.LogTrace($"GetArticle(titles='{titles}')");
 
-            var settings = new WikiDexSettings();
-            _configuration.GetSection(WikiDexSettings.WikiDex).Bind(settings);
-
             var parametros = new QueryStringParameters();
             parametros["format"] = "json";
             parametros["action"] = "query";
@@ -83,7 +82,7 @@ namespace WikiDex.Business
             parametros["prop"] = "info";
             parametros["inprop"] = "url";
 
-            string url = string.Format("{0}?{1}", settings.Url, parametros.BuildQueryString(false));
+            string url = string.Format("{0}?{1}", _settings.Url, parametros.BuildQueryString(false));
 
             using (WebClient client = new WebClient())
             {
@@ -104,16 +103,13 @@ namespace WikiDex.Business
         {
             _logger.LogTrace($"GetImages(aifrom='{aifrom}')");
 
-            var settings = new WikiDexSettings();
-            _configuration.GetSection(WikiDexSettings.WikiDex).Bind(settings);
-
             var parametros = new QueryStringParameters();
             parametros["format"] = "json";
             parametros["action"] = "query";
             parametros["list"] = "allimages";
             parametros["aifrom"] = aifrom;
 
-            string url = string.Format("{0}?{1}", settings.Url, parametros.BuildQueryString(false));
+            string url = string.Format("{0}?{1}", _settings.Url, parametros.BuildQueryString(false));
 
             using (WebClient client = new WebClient())
             {
@@ -137,9 +133,6 @@ namespace WikiDex.Business
         {
             _logger.LogTrace($"GetLastRevision(titles='{titles}')");
 
-            var settings = new WikiDexSettings();
-            _configuration.GetSection(WikiDexSettings.WikiDex).Bind(settings);
-
             var parametros = new QueryStringParameters();
             parametros["format"] = "json";
             parametros["action"] = "query";
@@ -147,7 +140,7 @@ namespace WikiDex.Business
             parametros["prop"] = "revisions";
             parametros["rvprop"] = "content";
 
-            string url = string.Format("{0}?{1}", settings.Url, parametros.BuildQueryString(false));
+            string url = string.Format("{0}?{1}", _settings.Url, parametros.BuildQueryString(false));
 
             using (WebClient client = new WebClient())
             {

@@ -8,7 +8,7 @@
         /// <summary>
         /// Settings key
         /// </summary>
-        public const string WikiDex = "WikiDex";
+        public const string Key = "WikiDex";
 
         /// <summary>
         /// WikiDex Url
