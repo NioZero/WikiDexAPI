@@ -20,9 +20,9 @@ RUN dotnet build "WikiDexAPI.csproj" -c Release -o /app/build
 
 # testing
 FROM build AS testing
-WORKDIR /src/Colors.API
-RUN dotnet build
-WORKDIR /src/Colors.UnitTests
+WORKDIR "/src/WikiDexAPI"
+RUN dotnet build "WikiDexAPI.csproj" -c Release -o /app/build
+WORKDIR "/src/WikiDex.UnitTests"
 RUN dotnet test
 
 # publish
