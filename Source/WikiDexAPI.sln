@@ -5,9 +5,16 @@ VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WikiDexAPI", "WikiDexAPI\WikiDexAPI.csproj", "{375A9E6E-685D-4202-B47D-50F984BBB62A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WikiDex.Business", "WikiDex.Business\WikiDex.Business.csproj", "{F9695D65-8BC9-4740-A984-4715F4FCBAEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WikiDex.Business", "WikiDex.Business\WikiDex.Business.csproj", "{F9695D65-8BC9-4740-A984-4715F4FCBAEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WikiDex.Entities", "WikiDex.Entities\WikiDex.Entities.csproj", "{A5C03459-2119-4F31-AD3B-8DAFAB67487E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WikiDex.Entities", "WikiDex.Entities\WikiDex.Entities.csproj", "{A5C03459-2119-4F31-AD3B-8DAFAB67487E}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A4C8A649-02E9-4DD8-BC7B-EED41A813B2F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8E736799-2DF6-4179-8668-0AEF7878C8EA}"
+	ProjectSection(SolutionItems) = preProject
+		heroku.yml = heroku.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +34,10 @@ Global
 		{A5C03459-2119-4F31-AD3B-8DAFAB67487E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5C03459-2119-4F31-AD3B-8DAFAB67487E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5C03459-2119-4F31-AD3B-8DAFAB67487E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4C8A649-02E9-4DD8-BC7B-EED41A813B2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4C8A649-02E9-4DD8-BC7B-EED41A813B2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4C8A649-02E9-4DD8-BC7B-EED41A813B2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4C8A649-02E9-4DD8-BC7B-EED41A813B2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
