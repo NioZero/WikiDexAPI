@@ -7,9 +7,9 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["WikiDexAPI/WikiDexAPI.csproj", "WikiDexAPI/"]
-COPY ["WikiDex.Business/WikiDex.Business.csproj", "WikiDex.Business/"]
-COPY ["WikiDex.Entities/WikiDex.Entities.csproj", "WikiDex.Entities/"]
+COPY ["Source/WikiDexAPI/WikiDexAPI.csproj", "WikiDexAPI/"]
+COPY ["Source/WikiDex.Business/WikiDex.Business.csproj", "WikiDex.Business/"]
+COPY ["Source/WikiDex.Entities/WikiDex.Entities.csproj", "WikiDex.Entities/"]
 RUN dotnet restore "WikiDexAPI/WikiDexAPI.csproj"
 COPY . .
 WORKDIR "/src/WikiDexAPI"
