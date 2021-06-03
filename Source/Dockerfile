@@ -16,18 +16,19 @@ COPY ["WikiDexAPI/*.csproj", "WikiDexAPI/"]
 RUN dotnet restore
 COPY . .
 WORKDIR "/src/WikiDexAPI"
-RUN dotnet build "WikiDexAPI.csproj" -c Release -o /app/build
+RUN dotnet build -c Release -o /app/build
 
 # testing
 FROM build AS testing
 WORKDIR "/src/WikiDexAPI"
-RUN dotnet build "WikiDexAPI.csproj" -c Release -o /app/build
+RUN dotnet build -c Release -o /app/build
 WORKDIR "/src/WikiDex.UnitTests"
 RUN dotnet test
 
 # publish
 FROM build AS publish
-RUN dotnet publish "WikiDexAPI.csproj" -c Release -o /app/publish
+WORKDIR "/src/WikiDexAPI"
+RUN dotnet publish -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
