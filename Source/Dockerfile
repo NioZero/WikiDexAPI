@@ -5,16 +5,27 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
+# build
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["Source/WikiDexAPI/WikiDexAPI.csproj", "WikiDexAPI/"]
-COPY ["Source/WikiDex.Business/WikiDex.Business.csproj", "WikiDex.Business/"]
-COPY ["Source/WikiDex.Entities/WikiDex.Entities.csproj", "WikiDex.Entities/"]
-RUN dotnet restore "WikiDexAPI/WikiDexAPI.csproj"
+COPY *.sln .
+COPY ["WikiDex.Entities/*.csproj", "WikiDex.Entities/"]
+COPY ["WikiDex.Business/*.csproj", "WikiDex.Business/"]
+COPY ["WikiDex.UnitTests/*.csproj", "WikiDex.UnitTests/"]
+COPY ["WikiDexAPI/*.csproj", "WikiDexAPI/"]
+RUN dotnet restore
 COPY . .
 WORKDIR "/src/WikiDexAPI"
 RUN dotnet build "WikiDexAPI.csproj" -c Release -o /app/build
 
+# testing
+FROM build AS testing
+WORKDIR /src/Colors.API
+RUN dotnet build
+WORKDIR /src/Colors.UnitTests
+RUN dotnet test
+
+# publish
 FROM build AS publish
 RUN dotnet publish "WikiDexAPI.csproj" -c Release -o /app/publish
 
